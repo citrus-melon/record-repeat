@@ -48,5 +48,6 @@ stopBtn.addEventListener("click", () => {
     if (recorder.state == "recording") {
         autoplay = false;
         recorder.stop();
+        recordBtn.classList.remove("activated");
     } else stopAll();
 });
