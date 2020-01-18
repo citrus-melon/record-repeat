@@ -1,4 +1,5 @@
 let recorder;
+let autoplay = true;
 let recordBtn = document.getElementById("recordBtn"),
 stopBtn = document.getElementById("stopBtn"),
 uploadBtn = document.getElementById("uploadBtn"),
@@ -23,7 +24,12 @@ let onRecordingReady = (e) => {
     element.controls = true;
     element.loop = true;
     audioContainer.appendChild(element);
-    element.play();
+    if (autoplay) {element.play(); autoplay = false;}
+}
+
+let stopAll = () => {
+    var sounds = document.getElementsByTagName('audio');
+    for (i=0; i<sounds.length; i++) sounds[i].pause();
 }
 
 let recordClick = () => {
@@ -32,8 +38,15 @@ let recordClick = () => {
         recorder.stop();
     } else {
         recordBtn.classList.add("activated");
+        stopAll();
         recorder.start();
     }
 }
 
 recordBtn.addEventListener("click", recordClick);
+stopBtn.addEventListener("click", () => {
+    if (recorder.state == "recording") {
+        autoplay = false;
+        recorder.stop();
+    } else stopAll();
+});
