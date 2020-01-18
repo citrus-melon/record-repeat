@@ -60,9 +60,10 @@ h2 {
 }
 
 #audioContainer {
-    margin-top: 20px;
+    margin-top: 16px;
 }
 
 audio {
     outline: none;
+    margin: 4px;
 }
