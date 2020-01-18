@@ -43,6 +43,19 @@ let recordClick = () => {
     }
 }
 
+let handleUpload = () => {
+    let fileList = uploadBtn.files;
+    for (let i = 0; i < fileList.length; i++) {
+        let element = document.createElement("audio");
+        let audioUrl = window.URL.createObjectURL(fileList[i]);
+        element.src = audioUrl;
+        element.controls = true;
+        element.loop = true;
+        audioContainer.appendChild(element);
+    }
+}
+
+uploadBtn.addEventListener("change", handleUpload);
 recordBtn.addEventListener("click", recordClick);
 stopBtn.addEventListener("click", () => {
     if (recorder.state == "recording") {
