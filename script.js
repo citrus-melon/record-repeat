@@ -24,7 +24,7 @@ let onRecordingReady = (e) => {
     element.controls = true;
     element.loop = true;
     audioContainer.appendChild(element);
-    if (autoplay) {element.play(); autoplay = false;}
+    if (autoplay) element.play(); else autoplay = true;
 }
 
 let stopAll = () => {
